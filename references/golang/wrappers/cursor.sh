@@ -6,4 +6,4 @@ TOOL_DIR="$(cd -- "$SCRIPT_DIR/.." && pwd)"
 
 printf 'Applying Cursor wrapper for the Go skill package.\n'
 
-"$TOOL_DIR/install.sh" --all
+"$TOOL_DIR/install.sh" "$@"

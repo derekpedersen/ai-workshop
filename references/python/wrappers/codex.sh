@@ -6,4 +6,4 @@ TOOL_DIR="$(cd -- "$SCRIPT_DIR/.." && pwd)"
 
 printf 'Applying Codex wrapper for the Python toolchain.\n'
 
-"$TOOL_DIR/install.sh"
+"$TOOL_DIR/install.sh" "$@"

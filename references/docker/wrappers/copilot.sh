@@ -6,4 +6,4 @@ TOOL_DIR="$(cd -- "$SCRIPT_DIR/.." && pwd)"
 
 printf 'Applying Copilot wrapper for Docker tooling.\n'
 
-"$TOOL_DIR/install.sh"
+"$TOOL_DIR/install.sh" "$@"
