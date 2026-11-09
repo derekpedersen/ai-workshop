@@ -30,4 +30,16 @@ When adding new work to this repo:
 2. add or update a role-specific agent in `agents/` when needed
 3. describe end-to-end execution in `workflows/`
 4. keep README files clear and concise
-5. keep the workshop easy to extend
+5. prefer upstream specialist skill libraries for well-established domain knowledge
+6. use this repo as the central workshop layer for curation, workflows, prompts, and local orchestration
+7. keep the workshop easy to extend
+
+## External skill references
+
+When a mature upstream library already covers a domain well, prefer referencing and integrating it rather than reimplementing it locally.
+
+Examples include:
+
+- Samber Go skills: https://github.com/samber/cc-skills-golang/
+
+Use this repo to connect those upstream capabilities to your own agents, workflows, and project conventions.

@@ -42,6 +42,37 @@ This workshop is organized to support:
 - prompt libraries and reference materials for experimentation
 - practical learning through real project-oriented examples
 
+## Upstream skill sources
+
+This repository acts as the central workshop hub for organizing, curating, and applying reusable AI skills. It is not intended to replace proven upstream skill libraries; instead, it brings them together with project-specific workflows and prompts.
+
+For Go-focused capabilities, this workshop uses [samber/cc-skills-golang](https://github.com/samber/cc-skills-golang/) as a primary upstream source of reusable skills. The repository can be used as a central installation point for Go knowledge, while this workshop adds custom workflow orchestration, role-based agents, and project-specific patterns.
+
+Example install patterns:
+
+```bash
+npx skills add https://github.com/samber/cc-skills-golang --all
+# or a specific skill
+npx skills add https://github.com/samber/cc-skills-golang --skill golang-project-layout
+```
+
+This keeps the workshop focused on integration, selection, and usage, while avoiding the maintenance burden of re-creating large upstream skill libraries from scratch.
+
+## Skill installation pattern
+
+This repo is intended to be the central place where you install, inspect, and curate external skill sources for your tooling and workflows.
+
+```bash
+# install all Go skills from the upstream library
+npx skills add https://github.com/samber/cc-skills-golang --all
+
+# install only a specific skill needed for a task
+npx skills add https://github.com/samber/cc-skills-golang --skill golang-project-layout
+npx skills add https://github.com/samber/cc-skills-golang --skill golang-testing
+```
+
+This lets the workshop stay lightweight while still giving you access to mature upstream skill sets when you need them.
+
 ## Skills
 
 The `skills/` section contains focused capability modules. Each skill is intended to represent a reusable pattern or competency, such as:
