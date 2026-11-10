@@ -126,3 +126,44 @@ The structure is intentionally modular so new capabilities can be added without 
 ## Current focus
 
 This is a living workshop and a foundation for future AI-assisted development patterns. The current structure is intended to grow into a practical library of reusable capabilities and team workflows.
+
+## CI and validation
+
+This repository now includes a Jenkins pipeline defined in `Jenkinsfile`.
+
+Because this project is script-first, CI focuses on shell quality and workflow behavior instead of build artifacts:
+
+- shell syntax validation
+- shellcheck linting
+- workshop policy checks for script layout and wrapper delegation
+- local lifecycle smoke test (`install.sh` -> `list.sh` -> `uninstall.sh`)
+- optional external reference checks behind `RUN_EXTERNAL_SKILL_CHECKS=true`
+
+Pipeline helper scripts are intentionally stored in `.ci/` to indicate they are repository automation utilities, not workshop skill content.
+
+### Jenkins agent prerequisites
+
+Required for default pipeline stages:
+
+- `bash`
+- `shellcheck`
+
+Optional for external reference validation stage (`RUN_EXTERNAL_SKILL_CHECKS=true`):
+
+- `node`
+- `npx`
+
+Run checks locally:
+
+```bash
+.ci/lint-bash-syntax.sh
+.ci/lint-shellcheck.sh
+.ci/verify-workshop-policy.sh
+.ci/smoke-local-lifecycle.sh
+```
+
+If you want to run the optional external check locally:
+
+```bash
+.ci/smoke-external-references.sh
+```
