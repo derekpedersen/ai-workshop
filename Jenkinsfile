@@ -1,5 +1,7 @@
 pipeline {
-  agent any
+  agent  {
+    label 'build-jenkins-base'
+  }
 
   options {
     timestamps()
