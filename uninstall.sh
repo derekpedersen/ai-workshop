@@ -75,7 +75,7 @@ list_local_skills() {
   if [[ -d "$WORKSHOP_TARGET_DIR/skills" ]]; then
     while IFS= read -r skill; do
       names+=("$skill")
-    done < <(find "$WORKSHOP_TARGET_DIR/skills" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort)
+    done < <(find "$WORKSHOP_TARGET_DIR/skills" -mindepth 1 -maxdepth 1 -type d | sed 's|.*/||' | sort)
   fi
   printf '%s\n' "${names[@]}"
 }

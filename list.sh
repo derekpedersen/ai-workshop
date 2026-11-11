@@ -64,7 +64,7 @@ list_local_skills() {
   fi
 
   if [[ -n "$(find "$target_dir" -mindepth 1 -maxdepth 1 -type d -print -quit 2>/dev/null)" ]]; then
-    find "$target_dir" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort
+    find "$target_dir" -mindepth 1 -maxdepth 1 -type d | sed 's|.*/||' | sort
   else
     echo "No local skills installed in $target_dir"
   fi
