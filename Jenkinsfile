@@ -48,6 +48,8 @@ pipeline {
 
   post {
     always {
+      archiveArtifacts artifacts: 'reports/**/*', allowEmptyArchive: true
+      junit testResults: 'reports/junit-*.xml', allowEmptyResults: true
       echo 'Pipeline completed.'
     }
   }

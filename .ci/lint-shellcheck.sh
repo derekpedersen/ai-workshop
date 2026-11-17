@@ -4,6 +4,10 @@ set -euo pipefail
 ROOT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT_DIR"
 
+report_dir="${CI_REPORTS_DIR:-reports}"
+mkdir -p "$report_dir"
+report_file="$report_dir/shellcheck-checkstyle.xml"
+
 if ! command -v shellcheck >/dev/null 2>&1; then
   echo "shellcheck is required but was not found on PATH." >&2
   echo "Install shellcheck on the Jenkins agent, then rerun." >&2
@@ -21,6 +25,8 @@ if [[ ${#shell_scripts[@]} -eq 0 ]]; then
 fi
 
 echo "Running shellcheck on ${#shell_scripts[@]} shell scripts"
-shellcheck --severity=warning "${shell_scripts[@]}"
+shellcheck --severity=warning --format=checkstyle "${shell_scripts[@]}" >"$report_file"
+
+echo "Shellcheck report written to: $report_file"
 
 echo "Shellcheck validation complete."
